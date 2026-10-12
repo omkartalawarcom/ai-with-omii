@@ -1,0 +1,471 @@
+<!DOCTYPE html><html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="theme-color" content="#080b18">
+  <meta name="description" content="AI with Omii - Learn artificial intelligence through interactive lessons and experiments.">
+  <title>AI with Omii | Explore Intelligence</title>
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }:root {
+  --bg: #080b18;
+  --panel: #11172a;
+  --panel2: #171e35;
+  --text: #f4f6ff;
+  --muted: #a8b1cc;
+  --blue: #61a5ff;
+  --purple: #a78bfa;
+  --border: rgba(255,255,255,.09);
+}
+
+html { scroll-behavior: smooth; }
+
+body {
+  background:
+    radial-gradient(ellipse at 15% 0%, rgba(80,75,210,.20), transparent 38%),
+    radial-gradient(ellipse at 90% 30%, rgba(0,180,255,.10), transparent 35%),
+    var(--bg);
+  color: var(--text);
+  font-family: system-ui, -apple-system, sans-serif;
+  min-height: 100vh;
+  line-height: 1.6;
+}
+
+button, input { font: inherit; }
+
+button { cursor: pointer; }
+
+.navbar {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 17px 6%;
+  border-bottom: 1px solid var(--border);
+  background: rgba(8,11,24,.86);
+  position: sticky;
+  top: 0;
+  z-index: 10;
+  backdrop-filter: blur(16px);
+}
+
+.brand {
+  font-size: 21px;
+  font-weight: 800;
+  letter-spacing: -.7px;
+}
+
+.brand span {
+  background: linear-gradient(90deg, var(--blue), var(--purple));
+  color: transparent;
+  background-clip: text;
+  -webkit-background-clip: text;
+}
+
+.badge {
+  font-size: 11px;
+  border: 1px solid rgba(167,139,250,.4);
+  color: #c4b5fd;
+  border-radius: 20px;
+  padding: 5px 9px;
+}
+
+.container {
+  width: min(1100px, 90%);
+  margin: auto;
+}
+
+.hero {
+  text-align: center;
+  padding: 75px 0 55px;
+}
+
+.eyebrow {
+  color: #a5b4fc;
+  font-size: 12px;
+  font-weight: 800;
+  letter-spacing: 2px;
+  text-transform: uppercase;
+}
+
+h1 {
+  font-size: clamp(38px, 8vw, 68px);
+  line-height: 1.12;
+  letter-spacing: -2px;
+  margin: 20px 0;
+}
+
+.gradient-text {
+  background: linear-gradient(90deg, #60a5fa, #a78bfa, #67e8f9);
+  color: transparent;
+  background-clip: text;
+  -webkit-background-clip: text;
+}
+
+.hero p {
+  max-width: 620px;
+  margin: 0 auto;
+  color: var(--muted);
+  font-size: 16px;
+}
+
+.hero-actions {
+  display: flex;
+  gap: 12px;
+  justify-content: center;
+  flex-wrap: wrap;
+  margin-top: 28px;
+}
+
+.btn {
+  padding: 12px 19px;
+  border-radius: 12px;
+  border: 1px solid var(--border);
+  font-weight: 700;
+  transition: transform .2s, opacity .2s;
+}
+
+.btn:hover { transform: translateY(-2px); }
+
+.primary {
+  color: white;
+  border: none;
+  background: linear-gradient(100deg, #397df6, #8b5cf6);
+  box-shadow: 0 8px 28px rgba(96,90,240,.22);
+}
+
+.secondary {
+  color: white;
+  background: var(--panel);
+}
+
+.section-heading {
+  margin: 35px 0 20px;
+}
+
+.section-heading h2 {
+  font-size: 25px;
+  margin-bottom: 5px;
+}
+
+.section-heading p {
+  color: var(--muted);
+  font-size: 14px;
+}
+
+.grid {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0,1fr));
+  gap: 16px;
+}
+
+.card {
+  padding: 22px;
+  border-radius: 18px;
+  border: 1px solid var(--border);
+  background: linear-gradient(145deg, rgba(23,30,53,.96), rgba(13,18,34,.96));
+  transition: transform .2s, border-color .2s;
+}
+
+.card:hover {
+  transform: translateY(-4px);
+  border-color: rgba(129,140,248,.5);
+}
+
+.icon {
+  width: 46px;
+  height: 46px;
+  display: grid;
+  place-items: center;
+  font-size: 23px;
+  border-radius: 14px;
+  background: rgba(99,102,241,.15);
+  margin-bottom: 16px;
+}
+
+.card h3 { font-size: 17px; margin-bottom: 8px; }
+
+.card p {
+  font-size: 13px;
+  color: var(--muted);
+  margin-bottom: 17px;
+}
+
+.text-btn {
+  color: #93c5fd;
+  background: transparent;
+  border: 0;
+  font-size: 13px;
+  font-weight: 800;
+}
+
+.lab {
+  margin: 45px 0;
+  padding: 25px;
+  border: 1px solid var(--border);
+  background: rgba(17,23,42,.85);
+  border-radius: 20px;
+}
+
+.lab h2 { margin-bottom: 6px; }
+
+.lab > p {
+  color: var(--muted);
+  font-size: 14px;
+  margin-bottom: 18px;
+}
+
+.question-box {
+  display: flex;
+  gap: 10px;
+  margin-top: 14px;
+}
+
+.question-box input {
+  min-width: 0;
+  flex: 1;
+  background: #080d1b;
+  border: 1px solid #303b59;
+  border-radius: 11px;
+  color: white;
+  padding: 12px;
+  outline: none;
+}
+
+.question-box input:focus {
+  border-color: var(--blue);
+}
+
+.answer {
+  margin-top: 16px;
+  background: #080d1b;
+  border: 1px solid var(--border);
+  border-radius: 12px;
+  padding: 15px;
+  color: #dbe5ff;
+  font-size: 14px;
+  white-space: pre-wrap;
+  overflow-wrap: anywhere;
+  min-height: 52px;
+}
+
+.notice {
+  margin-top: 12px;
+  font-size: 12px;
+  color: var(--muted);
+}
+
+.quiz-option {
+  display: block;
+  width: 100%;
+  text-align: left;
+  padding: 12px;
+  margin-top: 9px;
+  border-radius: 10px;
+  color: white;
+  background: #0b1122;
+  border: 1px solid var(--border);
+}
+
+.quiz-option:hover { border-color: var(--purple); }
+
+.footer {
+  border-top: 1px solid var(--border);
+  text-align: center;
+  padding: 25px 10px;
+  margin-top: 45px;
+  color: var(--muted);
+  font-size: 12px;
+}
+
+.footer strong { color: #c4b5fd; }
+
+@media (max-width: 760px) {
+  .grid { grid-template-columns: repeat(2, minmax(0,1fr)); }
+  .hero { padding-top: 55px; }
+}
+
+@media (max-width: 480px) {
+  .grid { grid-template-columns: 1fr; }
+  .navbar { padding: 14px 5%; }
+  .brand { font-size: 19px; }
+  .badge { font-size: 9px; }
+  .hero p { font-size: 14px; }
+  .lab { padding: 17px; }
+  .question-box { flex-direction: column; }
+  .question-box .btn { width: 100%; }
+}
+
+  </style>
+</head>
+<body>  <header class="navbar">
+    <div class="brand">✦ AI with <span>Omii</span></div>
+    <div class="badge">LEARN · EXPLORE · CREATE</div>
+  </header>  <main class="container"><section class="hero">
+  <div class="eyebrow">Your AI learning universe</div>
+  <h1>Discover the world of<br><span class="gradient-text">Artificial Intelligence.</span></h1>
+  <p>
+    Learn how AI works, explore interactive demonstrations,
+    test your knowledge, and discover how intelligent technology
+    can help shape the future.
+  </p>
+  <div class="hero-actions">
+    <button class="btn primary" onclick="document.getElementById('learn').scrollIntoView()">Explore AI ↗</button>
+    <button class="btn secondary" onclick="document.getElementById('lab').scrollIntoView()">Open AI Lab ✦</button>
+  </div>
+</section>
+
+<section id="learn">
+  <div class="section-heading">
+    <h2>Explore your AI universe ✨</h2>
+    <p>Start with the basics and progress towards intelligent systems.</p>
+  </div>
+
+  <div class="grid">
+    <article class="card">
+      <div class="icon">🧠</div>
+      <h3>AI Fundamentals</h3>
+      <p>Understand artificial intelligence, its history, capabilities, and limitations.</p>
+      <button class="text-btn" onclick="showLesson('ai')">Learn basics ↗</button>
+    </article>
+
+    <article class="card">
+      <div class="icon">📊</div>
+      <h3>Machine Learning</h3>
+      <p>Discover how computers find patterns in data and make predictions.</p>
+      <button class="text-btn" onclick="showLesson('ml')">Explore ML ↗</button>
+    </article>
+
+    <article class="card">
+      <div class="icon">🕸️</div>
+      <h3>Neural Networks</h3>
+      <p>Explore computer systems inspired by the connected neurons in a brain.</p>
+      <button class="text-btn" onclick="showLesson('nn')">Explore networks ↗</button>
+    </article>
+
+    <article class="card">
+      <div class="icon">💬</div>
+      <h3>AI Chatbot Lab</h3>
+      <p>Try the built-in educational demo and learn what a real AI chatbot needs.</p>
+      <button class="text-btn" onclick="document.getElementById('lab').scrollIntoView()">Open lab ↗</button>
+    </article>
+
+    <article class="card">
+      <div class="icon">🧪</div>
+      <h3>Interactive AI</h3>
+      <p>Experiment with a simple learning simulation and observe how data changes results.</p>
+      <button class="text-btn" onclick="showLesson('experiment')">Start experiment ↗</button>
+    </article>
+
+    <article class="card">
+      <div class="icon">🎯</div>
+      <h3>Knowledge Quiz</h3>
+      <p>Answer a question about AI and check your understanding.</p>
+      <button class="text-btn" onclick="document.getElementById('quiz').scrollIntoView()">Take quiz ↗</button>
+    </article>
+  </div>
+</section>
+
+<section class="lab" id="lab">
+  <h2>🤖 AI Learning Assistant</h2>
+  <p>Ask a question about AI. This first version uses a local educational demo, not a live AI model.</p>
+  <form class="question-box" id="chatForm">
+    <input id="question" type="text" placeholder="Example: What is machine learning?" autocomplete="off" required>
+    <button class="btn primary" type="submit">Ask AI ↗</button>
+  </form>
+  <div class="answer" id="answer" aria-live="polite">Your educational answer will appear here.</div>
+  <div class="notice">Demo mode: answers come from a small built-in knowledge base. A secure AI API can be integrated in a later step.</div>
+</section>
+
+<section class="lab" id="lesson">
+  <h2>📘 AI Knowledge Space</h2>
+  <p id="lessonText">Choose any learning card above to discover its topic.</p>
+</section>
+
+<section class="lab" id="quiz">
+  <h2>🎯 Quick AI Quiz</h2>
+  <p id="quizQuestion">What is the main purpose of Artificial Intelligence?</p>
+  <div id="quizOptions">
+    <button class="quiz-option" onclick="checkAnswer(0)">A. To make computers perform tasks that require intelligent behaviour</button>
+    <button class="quiz-option" onclick="checkAnswer(1)">B. Only to increase screen brightness</button>
+    <button class="quiz-option" onclick="checkAnswer(2)">C. Only to store photographs</button>
+  </div>
+  <div class="answer" id="quizAnswer" aria-live="polite">Choose an answer to check your knowledge.</div>
+</section>
+
+  </main>  <footer class="footer">
+    <p>Made with curiosity 💜 by <strong>Omii</strong></p>
+    <p>AI with Omii · Learn responsibly. Build creatively.</p>
+  </footer>  <script>
+    const lessons = {
+      ai: {
+        title: "Artificial Intelligence (AI)",
+        text: "AI is a field of computer science focused on creating systems that perform tasks associated with human intelligence, such as understanding language, recognising patterns, and making predictions. AI systems can make mistakes, so important information should be checked."
+      },
+      ml: {
+        title: "Machine Learning (ML)",
+        text: "Machine learning is a branch of AI. A model learns patterns from examples in data and uses those patterns to make predictions. For example, a model can learn from labelled pictures to classify new pictures. The quality of the data matters."
+      },
+      nn: {
+        title: "Neural Networks",
+        text: "A neural network is a computing model made of connected units arranged in layers. During training, it adjusts numerical weights to reduce errors on examples. Neural networks are used for image recognition, language processing, and many other tasks."
+      },
+      experiment: {
+        title: "Interactive Learning Experiment",
+        text: "Imagine teaching a computer to distinguish cats from dogs. Give it many correctly labelled examples, train a model, and then test it with new pictures. The model may get some predictions wrong, especially if the training examples are limited or unrepresentative. This illustrates why testing matters."
+      }
+    };
+
+    function showLesson(key) {
+      const lesson = lessons[key];
+      if (!lesson) return;
+      document.getElementById("lessonText").textContent =
+        lesson.title + "\n\n" + lesson.text;
+      document.getElementById("lesson").scrollIntoView({ behavior: "smooth" });
+    }
+
+    document.getElementById("chatForm").addEventListener("submit", function(event) {
+      event.preventDefault();
+
+      const input = document.getElementById("question");
+      const output = document.getElementById("answer");
+      const q = input.value.trim().toLowerCase();
+
+      if (!q) return;
+
+      let response;
+
+      if (q.includes("machine learning") || q.includes(" ml ")) {
+        response = lessons.ml.title + "\n\n" + lessons.ml.text;
+      } else if (q.includes("neural network")) {
+        response = lessons.nn.title + "\n\n" + lessons.nn.text;
+      } else if (q.includes("deep learning")) {
+        response = "Deep learning is a type of machine learning that uses neural networks with multiple layers. It can learn complex patterns from large datasets and is widely used in image recognition and language AI.";
+      } else if (q.includes("what is ai") || q === "ai" || q.includes("artificial intelligence")) {
+        response = lessons.ai.title + "\n\n" + lessons.ai.text;
+      } else if (q.includes("example")) {
+        response = "Examples of AI include language assistants, recommendation systems, spam filters, image recognition, and navigation systems. Different applications use different AI techniques.";
+      } else if (q.includes("robot")) {
+        response = "Robotics combines engineering, sensors, control systems, and sometimes AI. Not every robot uses AI, and not every AI system is a robot.";
+      } else if (q.includes("train") || q.includes("data")) {
+        response = "AI training uses examples or other data to adjust a model. After training, testing on separate examples helps measure how well the model works on unfamiliar inputs.";
+      } else {
+        response = "This demo has a limited knowledge base. Try asking: What is AI? What is machine learning? What are neural networks? What is deep learning? Give me examples of AI.";
+      }
+
+      output.textContent = response;
+    });
+
+    function checkAnswer(choice) {
+      const output = document.getElementById("quizAnswer");
+
+      if (choice === 0) {
+        output.textContent = "Correct! 🎉 AI aims to build systems that can perform tasks associated with intelligent behaviour. Great job!";
+      } else {
+        output.textContent = "Not quite! 😊 Try option A. AI helps computers perform tasks such as recognising patterns, understanding language, and making predictions.";
+      }
+    }
+  </script></body>
+</html>
